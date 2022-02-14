@@ -25,6 +25,14 @@ class AdminController extends Controller
         ]);
         //
     }
+    public function knowledge()
+    {
+        $data = DB::table('knowledge')->orderByDesc('id')->get();
+        return view('admin/knowledge', [
+            "data" => $data
+        ]);
+        //
+    }
     public function penyakit()
     {
         $data = DB::table('penyakit')->orderByDesc('id')->get();
@@ -60,6 +68,18 @@ class AdminController extends Controller
             return redirect('penyakit')->with('success', "success");
         }
     }
+    public function input_knowledge(Request $request)
+    {
+        $insert = DB::table('knowledge')->insert([
+            "if" => $request->if,
+            "then" => $request->then,
+            "if_not_then" => $request->if_not_then,
+        ]);
+
+        if ($insert) {
+            return redirect('knowledge')->with('success', "success");
+        }
+    }
 
 
     public function delete_gejala($id)
@@ -68,6 +88,22 @@ class AdminController extends Controller
 
         if ($delete) {
             return redirect('gejala')->with('success', "success");
+        }
+    }
+    public function delete_penyakit($id)
+    {
+        $delete = DB::table('penyakit')->where('id', $id)->delete();
+
+        if ($delete) {
+            return redirect('penyakit')->with('success', "success");
+        }
+    }
+    public function delete_knowledge($id)
+    {
+        $delete = DB::table('knowledge')->where('id', $id)->delete();
+
+        if ($delete) {
+            return redirect('knowledge')->with('success', "success");
         }
     }
     public function detail_edit_gejala($id)
@@ -86,6 +122,16 @@ class AdminController extends Controller
 
         if ($data) {
             return view('admin/detail_edit_penyakit', [
+                "data" => $data
+            ]);
+        }
+    }
+    public function detail_edit_knowledge($id)
+    {
+        $data = DB::table('knowledge')->where('id', $id)->first();
+
+        if ($data) {
+            return view('admin/detail_edit_knowledge', [
                 "data" => $data
             ]);
         }
@@ -115,6 +161,18 @@ class AdminController extends Controller
 
         if ($update) {
             return redirect('penyakit')->with('success', "success");
+        }
+    }
+    public function update_data_knowledge(Request $request, $id)
+    {
+        $update = DB::table('knowledge')->where('id', $id)->update([
+            "if" => $request->if,
+            "then" => $request->then,
+            "if_not_then" => $request->if_not_then,
+        ]);
+
+        if ($update) {
+            return redirect('knowledge')->with('success', "success");
         }
     }
 

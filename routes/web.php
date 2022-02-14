@@ -30,6 +30,13 @@ Route::post('/input_gejala', [AdminController::class, 'input_gejala']);
 Route::post('/update_data_gejala/{id}', [AdminController::class, 'update_data_gejala']);
 
 Route::get('/penyakit', [AdminController::class, 'penyakit']);
+Route::get('/delete_penyakit/{id}', [AdminController::class, 'delete_penyakit']);
 Route::post('/input_penyakit', [AdminController::class, 'input_penyakit']);
 Route::post('/update_data_penyakit/{id}', [AdminController::class, 'update_data_penyakit']);
 Route::get('/detail_edit_penyakit/{id}', [AdminController::class, 'detail_edit_penyakit']);
+
+Route::get('/knowledge', [AdminController::class, 'knowledge']);
+Route::get('/delete_knowledge/{id}', [AdminController::class, 'delete_knowledge']);
+Route::post('/input_knowledge', [AdminController::class, 'input_knowledge']);
+Route::post('/update_data_knowledge/{id}', [AdminController::class, 'update_data_knowledge']);
+Route::get('/detail_edit_knowledge/{id}', [AdminController::class, 'detail_edit_knowledge']);

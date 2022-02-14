@@ -20,6 +20,12 @@
                 <span>Penyakit</span>
             </a>
         </li>
+        <li class="sidebar-item {{request()->is('knowledge')  ? 'active' : '' }} ">
+            <a href="{{url('knowledge')}}" class='sidebar-link'>
+                <i class="bi bi-collection"></i>
+                <span>Knowledge</span>
+            </a>
+        </li>
 
     </ul>
 </div>
