@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 14, 2022 at 12:52 AM
+-- Generation Time: Feb 14, 2022 at 02:08 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -62,6 +62,21 @@ INSERT INTO `gejala` (`id`, `kode`, `nama`, `pertanyaan`, `created_at`, `updated
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `knowledge`
+--
+
+CREATE TABLE `knowledge` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `if` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `then` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `if_not_then` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -81,7 +96,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2022_02_13_160233_gejala', 2),
-(6, '2022_02_13_232210_penyakit', 3);
+(6, '2022_02_13_232210_penyakit', 3),
+(7, '2022_02_14_004646_knowledge', 4);
 
 -- --------------------------------------------------------
 
@@ -110,13 +126,6 @@ CREATE TABLE `penyakit` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `penyakit`
---
-
-INSERT INTO `penyakit` (`id`, `kode`, `nama`, `deskripsi`, `pengendalian`, `created_at`, `updated_at`) VALUES
-(1, '00102', 'Covid 19.1', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque deserunt, veniam minus labore tempore voluptatibus atque mollitia deleniti ducimus nihil non pariatur ipsum voluptates cum maiores, saepe porro eveniet quod cumque rerum! Alias facere ipsam quaerat minus vel? Iusto dolore esse quam veniam facere aspernatur saepe', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque deserunt, veniam minus labore tempore voluptatibus atque mollitia deleniti ducimus nihil non pariatur ipsum voluptates cum', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -181,6 +190,12 @@ ALTER TABLE `gejala`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `knowledge`
+--
+ALTER TABLE `knowledge`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -230,10 +245,16 @@ ALTER TABLE `gejala`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `knowledge`
+--
+ALTER TABLE `knowledge`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `penyakit`
